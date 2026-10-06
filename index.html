@@ -1,0 +1,1342 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>The Anu File ❤️</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Georgia,"Times New Roman",serif;
+    background:#000;
+    color:white;
+    overflow-x:hidden;
+}
+
+.screen{
+    min-height:100vh;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.screen.active{
+    display:flex;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+#intro{
+    background:#000;
+}
+
+.intro-content{
+    width:90%;
+    max-width:700px;
+}
+
+.classified{
+    color:#777;
+    font-family:Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:6px;
+    margin-bottom:25px;
+}
+
+.file-title{
+    font-family:Arial,sans-serif;
+    font-size:clamp(48px,10vw,95px);
+    font-weight:900;
+    letter-spacing:7px;
+}
+
+.line{
+    width:150px;
+    height:1px;
+    background:#666;
+    margin:25px auto;
+}
+
+.sub{
+    color:#888;
+    font-family:Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:4px;
+}
+
+.input-area{
+    margin:45px auto 0;
+    display:flex;
+    max-width:450px;
+}
+
+.input-area input{
+    flex:1;
+    padding:17px;
+    background:#080808;
+    border:1px solid #444;
+    color:white;
+    outline:none;
+    text-align:center;
+    font-size:15px;
+}
+
+.input-area button{
+    border:0;
+    padding:0 24px;
+    background:white;
+    color:#000;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+#error{
+    min-height:25px;
+    margin-top:15px;
+    font-family:Arial,sans-serif;
+    font-size:12px;
+    color:#ff79aa;
+}
+
+/* =========================
+   WELCOME
+========================= */
+
+#mission{
+    background:
+        radial-gradient(circle at 50% 20%,#60345f,#281936 45%,#110b18 100%);
+}
+
+.welcome{
+    width:90%;
+    max-width:750px;
+}
+
+.small-title{
+    font-family:Arial,sans-serif;
+    font-size:12px;
+    letter-spacing:5px;
+    color:#e7b6dc;
+}
+
+.anu{
+    font-family:Arial,sans-serif;
+    font-size:clamp(65px,14vw,130px);
+    margin:12px 0;
+    background:linear-gradient(90deg,#ffb0d9,#fff,#d6b4ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.welcome p{
+    max-width:580px;
+    margin:auto;
+    line-height:1.8;
+    color:#eee;
+    font-size:16px;
+}
+
+.begin{
+    margin-top:38px;
+    padding:16px 35px;
+    border:1px solid rgba(255,255,255,.45);
+    border-radius:50px;
+    background:rgba(255,255,255,.08);
+    color:white;
+    cursor:pointer;
+    letter-spacing:2px;
+    transition:.3s;
+}
+
+.begin:hover{
+    background:rgba(255,255,255,.18);
+    transform:scale(1.05);
+}
+
+/* =========================
+   BOX
+========================= */
+
+#boxScreen{
+    background:
+        radial-gradient(circle,#4d2856,#211326 50%,#0b0610);
+}
+
+.box-area{
+    width:90%;
+}
+
+.box-label{
+    font-family:Arial,sans-serif;
+    color:#dca8d4;
+    font-size:11px;
+    letter-spacing:4px;
+    margin-bottom:30px;
+}
+
+.box{
+    width:180px;
+    height:130px;
+    margin:auto;
+    position:relative;
+    cursor:pointer;
+    filter:drop-shadow(0 0 25px rgba(255,130,210,.35));
+}
+
+.box-body{
+    position:absolute;
+    bottom:0;
+    width:100%;
+    height:90px;
+    background:linear-gradient(135deg,#b25a9e,#54244e);
+    border-radius:8px;
+}
+
+.box-lid{
+    position:absolute;
+    top:20px;
+    left:-7px;
+    width:194px;
+    height:35px;
+    background:linear-gradient(135deg,#d878bc,#69305f);
+    border-radius:7px;
+    transform-origin:bottom;
+    transition:1s;
+    z-index:2;
+}
+
+.box.open .box-lid{
+    transform:rotateX(-110deg);
+}
+
+.ribbon{
+    position:absolute;
+    left:77px;
+    top:0;
+    width:26px;
+    height:100%;
+    background:rgba(255,220,245,.4);
+    z-index:3;
+}
+
+.box-text{
+    margin-top:30px;
+    color:#eee;
+}
+
+.open-box{
+    margin-top:20px;
+    background:transparent;
+    border:1px solid #d98ac3;
+    color:white;
+    padding:12px 25px;
+    border-radius:30px;
+    cursor:pointer;
+}
+
+/* =========================
+   MEMORY FILM
+========================= */
+
+#memoryScreen{
+    background:
+        radial-gradient(circle at center,#38233e,#120a16 65%,#050205);
+}
+
+.memory-wrapper{
+    width:94%;
+    max-width:1000px;
+}
+
+.memory-header{
+    font-family:Arial,sans-serif;
+    font-size:11px;
+    letter-spacing:4px;
+    color:#cfa9c9;
+    margin-bottom:20px;
+}
+
+.memory-stage{
+    height:65vh;
+    min-height:390px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.photo-frame{
+    max-width:85vw;
+    max-height:58vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.photo{
+    max-width:100%;
+    max-height:58vh;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    display:block;
+    opacity:0;
+}
+
+/* Common glow */
+
+.photo-frame::after{
+    content:"";
+    position:absolute;
+    inset:-20px;
+    border-radius:20px;
+    background:radial-gradient(
+        ellipse,
+        rgba(255,160,220,.18),
+        transparent 65%
+    );
+    z-index:-1;
+    opacity:0;
+}
+
+/* ---------- EFFECT 1 ---------- */
+
+.effect1 .photo{
+    animation:develop 2.2s ease forwards;
+}
+
+.effect1::after{
+    animation:glowIn 2.2s ease forwards;
+}
+
+@keyframes develop{
+    0%{
+        opacity:0;
+        transform:scale(.82);
+        filter:blur(20px) brightness(1.7);
+    }
+    45%{
+        opacity:.45;
+        filter:blur(7px) brightness(1.4);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1);
+        filter:blur(0) brightness(1);
+    }
+}
+
+@keyframes glowIn{
+    0%{opacity:0;transform:scale(.6)}
+    50%{opacity:1}
+    100%{opacity:.6;transform:scale(1)}
+}
+
+/* ---------- EFFECT 2 ---------- */
+
+.effect2 .photo{
+    animation:filmSlide 2s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+@keyframes filmSlide{
+    0%{
+        opacity:0;
+        transform:translateX(-100%) rotate(-5deg);
+        filter:blur(5px);
+    }
+    60%{
+        opacity:1;
+        transform:translateX(10px) rotate(1deg);
+    }
+    100%{
+        opacity:1;
+        transform:translateX(0) rotate(0);
+        filter:blur(0);
+    }
+}
+
+/* ---------- EFFECT 3 ---------- */
+
+.effect3 .photo{
+    animation:polaroid 2s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+@keyframes polaroid{
+    0%{
+        opacity:0;
+        transform:translateY(-120%) rotate(12deg) scale(.7);
+    }
+    65%{
+        opacity:1;
+        transform:translateY(15px) rotate(-2deg) scale(1.02);
+    }
+    100%{
+        opacity:1;
+        transform:translateY(0) rotate(0) scale(1);
+    }
+}
+
+/* ---------- EFFECT 4 ---------- */
+
+.effect4 .photo{
+    animation:curtain 2.2s ease forwards;
+    clip-path:inset(0 50% 0 50%);
+}
+
+@keyframes curtain{
+    0%{
+        opacity:0;
+        clip-path:inset(0 50% 0 50%);
+        transform:scale(1.05);
+    }
+    60%{
+        opacity:1;
+    }
+    100%{
+        opacity:1;
+        clip-path:inset(0 0 0 0);
+        transform:scale(1);
+    }
+}
+
+/* ---------- EFFECT 5 ---------- */
+
+.effect5 .photo{
+    animation:flipPhoto 2s ease forwards;
+}
+
+@keyframes flipPhoto{
+    0%{
+        opacity:0;
+        transform:perspective(1000px) rotateY(90deg) scale(.85);
+    }
+    55%{
+        opacity:1;
+        transform:perspective(1000px) rotateY(-8deg) scale(1.02);
+    }
+    100%{
+        opacity:1;
+        transform:perspective(1000px) rotateY(0) scale(1);
+    }
+}
+
+/* ---------- EFFECT 6 ---------- */
+
+.effect6 .photo{
+    animation:heartReveal 2.3s ease forwards;
+    clip-path:circle(0% at 50% 50%);
+}
+
+@keyframes heartReveal{
+    0%{
+        opacity:0;
+        clip-path:circle(0% at 50% 50%);
+        transform:scale(.9);
+    }
+    60%{
+        opacity:1;
+    }
+    100%{
+        opacity:1;
+        clip-path:circle(100% at 50% 50%);
+        transform:scale(1);
+    }
+}
+
+/* ---------- EFFECT 7 ---------- */
+
+.effect7 .photo{
+    animation:floatCard 2.2s ease forwards;
+}
+
+@keyframes floatCard{
+    0%{
+        opacity:0;
+        transform:translateY(80px) rotate(6deg) scale(.75);
+    }
+    65%{
+        opacity:1;
+        transform:translateY(-10px) rotate(-2deg) scale(1.03);
+    }
+    100%{
+        opacity:1;
+        transform:translateY(0) rotate(0) scale(1);
+    }
+}
+
+/* ---------- EFFECT 8 ---------- */
+
+.effect8 .photo{
+    animation:finalReveal 3s cubic-bezier(.16,1,.3,1) forwards;
+}
+
+@keyframes finalReveal{
+    0%{
+        opacity:0;
+        transform:scale(.55);
+        filter:blur(18px) brightness(1.8);
+    }
+    35%{
+        opacity:.5;
+    }
+    75%{
+        transform:scale(1.04);
+        filter:blur(2px) brightness(1.2);
+    }
+    100%{
+        opacity:1;
+        transform:scale(1);
+        filter:blur(0) brightness(1);
+    }
+}
+
+.memory-title{
+    font-size:clamp(25px,5vw,40px);
+    color:#ffd0e9;
+    margin-top:15px;
+}
+
+.memory-description{
+    max-width:700px;
+    margin:10px auto 0;
+    color:#ddd;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.loading{
+    margin-top:17px;
+    font-family:Arial,sans-serif;
+    font-size:10px;
+    letter-spacing:3px;
+    color:#d9a9cb;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+#finalScreen{
+    background:
+        radial-gradient(circle at center,#5a294f,#241124 48%,#080309);
+}
+
+.final{
+    width:92%;
+    max-width:850px;
+}
+
+.complete{
+    font-family:Arial,sans-serif;
+    color:#b8ffe8;
+    font-size:11px;
+    letter-spacing:5px;
+}
+
+.final h1{
+    font-family:Arial,sans-serif;
+    font-size:clamp(48px,10vw,95px);
+    margin:20px 0 10px;
+    background:linear-gradient(90deg,#ff8bc8,#fff,#d0a9ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.final-sub{
+    font-size:21px;
+    color:#eee;
+}
+
+.final-button{
+    margin-top:35px;
+    padding:16px 30px;
+    border:1px solid #ff9bd0;
+    border-radius:40px;
+    background:rgba(255,120,190,.08);
+    color:white;
+    cursor:pointer;
+}
+
+.letter{
+    display:none;
+    text-align:left;
+    margin-top:30px;
+    padding:30px;
+    max-height:60vh;
+    overflow-y:auto;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:20px;
+    line-height:1.8;
+    color:#eee;
+}
+
+.letter.show{
+    display:block;
+    animation:letterIn 1s ease;
+}
+
+@keyframes letterIn{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.letter h2{
+    text-align:center;
+    color:#ffafd8;
+    margin-bottom:20px;
+}
+
+.letter p{
+    margin-bottom:15px;
+}
+
+.signature{
+    text-align:center;
+    color:#ffafd8;
+    margin-top:25px;
+    font-size:19px;
+}
+
+/* =========================
+   PARTICLES
+========================= */
+
+.sparkle{
+    position:absolute;
+    width:4px;
+    height:4px;
+    border-radius:50%;
+    background:white;
+    opacity:.5;
+    animation:spark 5s ease-in-out infinite;
+}
+
+@keyframes spark{
+    0%,100%{
+        transform:translateY(0);
+        opacity:.15;
+    }
+    50%{
+        transform:translateY(-50px);
+        opacity:.8;
+    }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .input-area{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .input-area button{
+        padding:14px;
+    }
+
+    .memory-stage{
+        height:58vh;
+        min-height:330px;
+    }
+
+    .photo-frame{
+        max-width:92vw;
+        max-height:52vh;
+    }
+
+    .photo{
+        max-width:92vw;
+        max-height:52vh;
+    }
+
+    .memory-description{
+        font-size:13px;
+    }
+
+    .letter{
+        padding:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- INTRO -->
+
+<section id="intro" class="screen active">
+
+    <div class="intro-content">
+
+        <div class="classified">
+            CLASSIFIED FRIENDSHIP ARCHIVE
+        </div>
+
+        <div class="file-title">
+            THE ANU FILE
+        </div>
+
+        <div class="line"></div>
+
+        <div class="sub">
+            A VERY SPECIAL FILE HAS BEEN FOUND
+        </div>
+
+        <div class="input-area">
+
+            <input
+                id="nameInput"
+                type="text"
+                placeholder="ENTER YOUR NAME"
+            >
+
+            <button id="verifyBtn">
+                VERIFY
+            </button>
+
+        </div>
+
+        <div id="error"></div>
+
+    </div>
+
+</section>
+
+
+<!-- WELCOME -->
+
+<section id="mission" class="screen">
+
+    <div class="welcome">
+
+        <div class="small-title">
+            IDENTITY VERIFIED ✓
+        </div>
+
+        <div class="anu">
+            ANU
+        </div>
+
+        <p>
+            Somewhere inside this little file are some moments,
+            some memories, and a lot of reasons to smile.
+            <br><br>
+            Ready?
+        </p>
+
+        <button class="begin" id="beginBtn">
+            BEGIN THE JOURNEY ✨
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- MEMORY BOX -->
+
+<section id="boxScreen" class="screen">
+
+    <div class="box-area">
+
+        <div class="box-label">
+            ONE SPECIAL BOX HAS BEEN FOUND
+        </div>
+
+        <div class="box" id="box">
+
+            <div class="box-body"></div>
+            <div class="box-lid"></div>
+            <div class="ribbon"></div>
+
+        </div>
+
+        <div class="box-text">
+            Something inside this box belongs to you. ❤️
+        </div>
+
+        <button class="open-box" id="openBox">
+            OPEN THE BOX
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- MEMORY FILM -->
+
+<section id="memoryScreen" class="screen">
+
+    <div class="memory-wrapper">
+
+        <div class="memory-header" id="memoryNumber">
+            MEMORY 01 / 08
+        </div>
+
+        <div class="memory-stage">
+
+            <div class="photo-frame" id="photoFrame">
+
+                <img
+                    id="photo"
+                    class="photo"
+                    src=""
+                    alt="Memory"
+                >
+
+            </div>
+
+        </div>
+
+        <div class="memory-title" id="memoryTitle"></div>
+
+        <div class="memory-description" id="memoryDescription"></div>
+
+        <div class="loading">
+            NEXT MEMORY WILL APPEAR AUTOMATICALLY ✨
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FINAL -->
+
+<section id="finalScreen" class="screen">
+
+    <div class="final">
+
+        <div class="complete">
+            THE FILE IS COMPLETE ✓
+        </div>
+
+        <h1>
+            HAPPY BIRTHDAY, ANU ❤️
+        </h1>
+
+        <div class="final-sub">
+            But the story isn't.
+        </div>
+
+        <button class="final-button" id="finalButton">
+            OPEN THE FINAL FILE 💌
+        </button>
+
+        <div class="letter" id="letter">
+
+            <h2>To My Favourite Human ❤️</h2>
+
+            <p>Anu,</p>
+
+            <p>
+                If you actually made it this far...
+                congratulations. 😂
+                You just unlocked the most important file
+                in this entire system.
+            </p>
+
+            <p>
+                I could have simply wished you
+                <b>Happy Birthday</b> like everyone else.
+            </p>
+
+            <p>
+                But honestly, our friendship deserves
+                something a little more crazy than that.
+            </p>
+
+            <p>
+                So I made this little world just for you.
+            </p>
+
+            <p>
+                Every photo here is just a small piece
+                of the memories we've collected together.
+            </p>
+
+            <p>
+                Some memories are funny.
+                Some are completely random.
+                Some probably make absolutely no sense
+                to anyone else.
+            </p>
+
+            <p>
+                And that's exactly what makes them special.
+            </p>
+
+            <p>
+                Somewhere between the random conversations,
+                stupid jokes, laughs, chaos and countless moments...
+                you became one of those people I genuinely
+                never want to lose.
+            </p>
+
+            <p>
+                Life is going to change.
+                We'll grow.
+                We'll get busy.
+                We'll have different things happening.
+            </p>
+
+            <p>
+                But I really hope that years from now,
+                we'll still look back at these pictures
+                and laugh at how crazy we were.
+            </p>
+
+            <p>
+                This file has 8 memories.
+            </p>
+
+            <p>
+                But trust me...
+            </p>
+
+            <p>
+                <b>8 IS NOWHERE NEAR ENOUGH.</b>
+            </p>
+
+            <p>
+                Because the best memories?
+                <br>
+                <b>WE HAVEN'T MADE THEM YET. 🫶</b>
+            </p>
+
+            <p>
+                So here's to another year of your life,
+                another year of madness,
+                another year of memories,
+                and hopefully many, many more chapters
+                of this friendship.
+            </p>
+
+            <p>
+                Keep smiling.
+                Keep being the same crazy Anu.
+                And never forget how loved you are. ❤️
+            </p>
+
+            <div class="signature">
+                HAPPY BIRTHDAY, ANU ❤️🎂
+                <br><br>
+                THE ANU FILE — END OF CURRENT RECORD
+                <br>
+                FRIENDSHIP STATUS: FOREVER LOADING… ♾️❤️
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- MUSIC -->
+
+<audio id="music" loop preload="auto">
+    <source src="./music/birthday-song.mp3" type="audio/mpeg">
+</audio>
+
+
+<script>
+
+/* =========================
+   SCREEN ELEMENTS
+========================= */
+
+const intro = document.getElementById("intro");
+const mission = document.getElementById("mission");
+const boxScreen = document.getElementById("boxScreen");
+const memoryScreen = document.getElementById("memoryScreen");
+const finalScreen = document.getElementById("finalScreen");
+
+const nameInput = document.getElementById("nameInput");
+const verifyBtn = document.getElementById("verifyBtn");
+const error = document.getElementById("error");
+
+const beginBtn = document.getElementById("beginBtn");
+
+const box = document.getElementById("box");
+const openBox = document.getElementById("openBox");
+
+const photoFrame = document.getElementById("photoFrame");
+const photo = document.getElementById("photo");
+const memoryNumber = document.getElementById("memoryNumber");
+const memoryTitle = document.getElementById("memoryTitle");
+const memoryDescription = document.getElementById("memoryDescription");
+
+const music = document.getElementById("music");
+
+const finalButton = document.getElementById("finalButton");
+const letter = document.getElementById("letter");
+
+
+/* =========================
+   SCREEN FUNCTION
+========================= */
+
+function showScreen(screen){
+
+    document.querySelectorAll(".screen").forEach(function(item){
+        item.classList.remove("active");
+    });
+
+    screen.classList.add("active");
+}
+
+
+/* =========================
+   VERIFY
+========================= */
+
+verifyBtn.addEventListener("click",function(){
+
+    const name =
+        nameInput.value.trim().toLowerCase();
+
+    if(name === "anu"){
+
+        error.textContent = "IDENTITY CONFIRMED ✓";
+
+        setTimeout(function(){
+            showScreen(mission);
+        },900);
+
+    }else{
+
+        error.textContent =
+            "ACCESS DENIED — TRY AGAIN.";
+
+    }
+
+});
+
+
+nameInput.addEventListener("keydown",function(e){
+
+    if(e.key === "Enter"){
+        verifyBtn.click();
+    }
+
+});
+
+
+/* =========================
+   BEGIN
+========================= */
+
+beginBtn.addEventListener("click",function(){
+
+    music.volume = 0.7;
+
+    music.currentTime = 0;
+
+    music.play().catch(function(){
+        console.log("Music could not autoplay.");
+    });
+
+    showScreen(boxScreen);
+
+});
+
+
+/* =========================
+   OPEN BOX
+========================= */
+
+openBox.addEventListener("click",function(){
+
+    box.classList.add("open");
+
+    openBox.style.display = "none";
+
+    setTimeout(function(){
+
+        showScreen(memoryScreen);
+
+        startMemories();
+
+    },1100);
+
+});
+
+
+/* =========================
+   MEMORY DATA
+========================= */
+
+const memories = [
+
+    {
+        image:"./photos/memory1.jpg",
+        title:"The Story Begins ✨",
+        description:
+        "Every story has a beginning… and somehow, ours became one of the most beautiful parts of my life."
+    },
+
+    {
+        image:"./photos/memory2.jpg",
+        title:"The Chaos Trio 🫶",
+        description:
+        "Three girls. One friendship. And way too many memories to fit into one file."
+    },
+
+    {
+        image:"./photos/memory3.jpg",
+        title:"That's So Anu 💕",
+        description:
+        "Some people don't have to try to make life brighter… they just do. That's you, Anu."
+    },
+
+    {
+        image:"./photos/memory4.jpg",
+        title:"Another Little Moment ✨",
+        description:
+        "Maybe this looked like just another picture that day… but now it's a little piece of a beautiful memory."
+    },
+
+    {
+        image:"./photos/memory5.jpg",
+        title:"Us, Again ❤️",
+        description:
+        "Different personalities, unlimited madness, random laughs… somehow, we became the perfect trio."
+    },
+
+    {
+        image:"./photos/memory6.jpg",
+        title:"Just Us 💗",
+        description:
+        "Some friendships don't need hundreds of people. Sometimes, one person is enough to make everything feel right."
+    },
+
+    {
+        image:"./photos/memory7.jpg",
+        title:"Another Chapter 💕",
+        description:
+        "Another picture. Another memory. Another little chapter in the story we keep creating together."
+    },
+
+    {
+        image:"./photos/memory8.jpg",
+        title:"Before This Story ✨",
+        description:
+        "Last year's birthday was a memory… this year's birthday is about to become a story."
+    }
+
+];
+
+
+let current = 0;
+
+
+/* =========================
+   START
+========================= */
+
+function startMemories(){
+
+    current = 0;
+
+    showMemory();
+
+}
+
+
+/* =========================
+   SHOW MEMORY
+========================= */
+
+function showMemory(){
+
+    const item = memories[current];
+
+    memoryNumber.textContent =
+        "MEMORY " +
+        String(current + 1).padStart(2,"0") +
+        " / 08";
+
+
+    memoryTitle.textContent = "";
+    memoryDescription.textContent = "";
+
+
+    /*
+       Remove old effect
+    */
+
+    photoFrame.className = "photo-frame";
+
+    photo.className = "photo";
+
+
+    /*
+       Fade old photo
+    */
+
+    photo.style.opacity = "0";
+
+
+    setTimeout(function(){
+
+        photo.src = item.image;
+
+    },300);
+
+
+    photo.onload = function(){
+
+        /*
+           Different effect for every memory
+        */
+
+        photoFrame.classList.add(
+            "effect" + (current + 1)
+        );
+
+
+        /*
+           Small delay makes the reveal feel cinematic
+        */
+
+        setTimeout(function(){
+
+            memoryTitle.textContent =
+                item.title;
+
+            memoryDescription.textContent =
+                item.description;
+
+        },900);
+
+    };
+
+
+    /*
+       Automatic timing
+    */
+
+    let time;
+
+    if(current === 7){
+
+        time = 8500;
+
+    }else{
+
+        time = 6500;
+
+    }
+
+
+    setTimeout(function(){
+
+        if(current < memories.length - 1){
+
+            current++;
+
+            showMemory();
+
+        }else{
+
+            showFinal();
+
+        }
+
+    },time);
+
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+function showFinal(){
+
+    showScreen(finalScreen);
+
+    fireworks();
+
+}
+
+
+/* =========================
+   LETTER
+========================= */
+
+finalButton.addEventListener("click",function(){
+
+    finalButton.style.display = "none";
+
+    letter.classList.add("show");
+
+    fireworks();
+
+});
+
+
+/* =========================
+   FIREWORKS
+========================= */
+
+function fireworks(){
+
+    for(let i=0;i<50;i++){
+
+        const spark =
+            document.createElement("div");
+
+        spark.className = "sparkle";
+
+        spark.style.left =
+            Math.random()*100 + "%";
+
+        spark.style.top =
+            Math.random()*75 + "%";
+
+        spark.style.animationDelay =
+            Math.random()*2 + "s";
+
+        finalScreen.appendChild(spark);
+
+        setTimeout(function(){
+
+            spark.remove();
+
+        },5000);
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
+```
